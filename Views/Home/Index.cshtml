@@ -1,0 +1,76 @@
+﻿@{
+    ViewData["Title"] = "Dojodatchi";
+}
+
+@model Datchi
+
+<h1>Dojodatchi</h1>
+
+<div class="row">
+    <div class="col-sm-3">
+        <label>Fullness</label>
+        <div class="progress">
+            <div 
+                class="progress-bar progress-bar-danger progress-bar-striped active" 
+                role="progressbar" 
+                aria-valuenow="@Model.fullness"
+                aria-valuemin="0" 
+                aria-valuemax="100" 
+                style="width:@Model.fullness%">
+                @Model.fullness%
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <label>Happiness</label>
+        <div class="progress">
+            <div 
+                class="progress-bar progress-bar-primary progress-bar-striped active" 
+                role="progressbar" 
+                aria-valuenow="@Model.happiness"
+                aria-valuemin="0" 
+                aria-valuemax="100" 
+                style="width:@Model.happiness%">
+                @Model.happiness%
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <label>Energy</label>
+        <div class="progress">
+            <div 
+                class="progress-bar progress-bar-success progress-bar-striped active" 
+                role="progressbar" 
+                aria-valuenow="@Model.energy"
+                aria-valuemin="0" 
+                aria-valuemax="100" 
+                style="width:@Model.energy%">
+                @Model.energy%
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <label>Meals</label>
+        <p>Meals: 🍔 &times; @Model.meals</p>
+    </div>
+</div>
+
+<img src="images/@Model.image" alt="@Model.image" />
+<h2>@Model.message</h2>
+
+
+<div class="row">
+    @{
+        if(Model.isActive)
+        {
+            <a href="/feed" class="btn btn-danger btn-lg col-sm-3">Feed</a>
+            <a href="/play" class="btn btn-primary btn-lg col-sm-3">Play</a>
+            <a href="/sleep" class="btn btn-success btn-lg col-sm-3">Sleep</a>
+            <a href="/work" class="btn btn-warning btn-lg col-sm-3">Work</a>
+        }
+        else
+        {
+            <a href="/reset" class="btn btn-info btn-lg col-sm-12">Start Over</a>
+        }
+    }
+</div>
